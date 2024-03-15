@@ -29,19 +29,8 @@ class _YelpHomeControllerState extends State<YelpHomeController> {
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const YelpSettingsScreen();
-              }));
-            },
-            icon: Icon(
-              Icons.settings_outlined,
-              color: YelpColors.backGroundColor,
-            ),
-          ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10.0),
             child: IconButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -49,22 +38,22 @@ class _YelpHomeControllerState extends State<YelpHomeController> {
                 }));
               },
               icon: Icon(
-                Icons.filter_alt_rounded,
+                Icons.settings_outlined,
                 color: YelpColors.backGroundColor,
               ),
             ),
           ),
-          IconButton(
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const YelpSettingsScreen();
-              }));
-            },
-            icon: Icon(
-              Icons.refresh_rounded,
-              color: YelpColors.backGroundColor,
-            ),
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+          //       return const YelpSettingsScreen();
+          //     }));
+          //   },
+          //   icon: Icon(
+          //     Icons.refresh_rounded,
+          //     color: YelpColors.backGroundColor,
+          //   ),
+          // ),
         ],
       ),
       body: screens[index],

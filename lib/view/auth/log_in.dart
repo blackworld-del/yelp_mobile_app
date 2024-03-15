@@ -4,8 +4,10 @@ import 'package:flutter/widgets.dart';
 import 'package:yelp/common/buttons.dart';
 import 'package:yelp/common/input_fields.dart';
 import 'package:yelp/constant/colors.dart';
+import 'package:yelp/data/local/yelp_lcoal.dart';
 import 'package:yelp/utils/device_size.dart';
 import 'package:yelp/view/auth/reset_pass.dart';
+import 'package:yelp/view/home/bottom_navigation_controller.dart';
 
 class YelpLoginScreen extends StatelessWidget {
   YelpLoginScreen({
@@ -66,7 +68,42 @@ class YelpLoginScreen extends StatelessWidget {
             child: Column(
               children: [
                 GestureDetector(
-                  onTap: () async {},
+                  onTap: () {
+                    if (YelpLocalData.getUsername() == emailController.text &&
+                        YelpLocalData.getPassword() == passController.text) {
+                      YelpLocalData.userCardentials(
+                              username: emailController.text,
+                              password: passController.text)
+                          .then((value) {
+                        ScaffoldMessenger.maybeOf(context)!.showSnackBar(
+                          const SnackBar(
+                            content: Text(
+                              "Login success",
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            backgroundColor: Colors.green,
+                          ),
+                        );
+                        Navigator.pushAndRemoveUntil(context,
+                            MaterialPageRoute(builder: (context) {
+                          return const YelpHomeController();
+                        }), (route) => false);
+                      });
+                    } else {
+                      ScaffoldMessenger.maybeOf(context)!
+                          .showSnackBar(const SnackBar(
+                        content: Text(
+                          "please check your username or password",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        backgroundColor: Colors.red,
+                      ));
+                    }
+                  },
                   child: customButton(
                     context: context,
                     child: const Text("Login"),

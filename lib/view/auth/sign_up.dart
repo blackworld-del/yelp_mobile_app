@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:yelp/common/buttons.dart';
 import 'package:yelp/common/input_fields.dart';
 import 'package:yelp/constant/colors.dart';
+import 'package:yelp/data/local/yelp_lcoal.dart';
 import 'package:yelp/utils/device_size.dart';
 
 class YelSignUpScreen extends StatelessWidget {
@@ -72,7 +73,25 @@ class YelSignUpScreen extends StatelessWidget {
             child: Column(
               children: [
                 GestureDetector(
-                  onTap: () async {},
+                  onTap: () {
+                    YelpLocalData.userCardentials(
+                            username: emailController.text,
+                            password: passController.text)
+                        .then((value) {
+                      ScaffoldMessenger.maybeOf(context)!.showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            "Account created successfully",
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          backgroundColor: Colors.green,
+                        ),
+                      );
+                      Navigator.pop(context);
+                    });
+                  },
                   child: customButton(
                     context: context,
                     child: const Text("Create Account"),
