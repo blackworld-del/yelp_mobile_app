@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:yelp/common/buttons.dart';
 import 'package:yelp/common/input_fields.dart';
 import 'package:yelp/constant/colors.dart';
 import 'package:yelp/utils/device_size.dart';
 
 class YelSignUpScreen extends StatelessWidget {
-  const YelSignUpScreen({
+  YelSignUpScreen({
     super.key,
   });
-
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
+  final TextEditingController rePasscontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passController = TextEditingController();
-    TextEditingController rePasscontroller = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
+          color: YelpColors.backGroundColor.withOpacity(0.4),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,6 +55,7 @@ class YelSignUpScreen extends StatelessWidget {
                 inputField(
                   hintText: "Password",
                   controller: passController,
+                  obscureText: true,
                 ),
                 SizedBox(
                   height: deviceHeight(context: context) * 0.02,
@@ -55,6 +63,7 @@ class YelSignUpScreen extends StatelessWidget {
                 inputField(
                   hintText: "Re-Password",
                   controller: rePasscontroller,
+                  obscureText: true,
                 ),
               ],
             ),
@@ -62,10 +71,13 @@ class YelSignUpScreen extends StatelessWidget {
           Center(
             child: Column(
               children: [
-                customButton(
-                  context: context,
-                  child: const Text("Create Account"),
-                  backgroundColor: YelpColors.backGroundColor,
+                GestureDetector(
+                  onTap: () async {},
+                  child: customButton(
+                    context: context,
+                    child: const Text("Create Account"),
+                    backgroundColor: YelpColors.backGroundColor,
+                  ),
                 ),
                 SizedBox(
                   height: deviceHeight(context: context) * 0.02,

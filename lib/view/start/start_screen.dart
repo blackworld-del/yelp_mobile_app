@@ -57,7 +57,7 @@ class YelpStartedScreen extends StatelessWidget {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return const YelpLoginScreen();
+                    return YelpLoginScreen();
                   }),
                   (route) => true,
                 );
@@ -82,7 +82,7 @@ class YelpStartedScreen extends StatelessWidget {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return const YelSignUpScreen();
+                    return YelSignUpScreen();
                   }),
                   (route) => true,
                 );

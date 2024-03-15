@@ -5,17 +5,24 @@ import 'package:yelp/constant/colors.dart';
 import 'package:yelp/utils/device_size.dart';
 
 class YelpResetScreen extends StatelessWidget {
-  const YelpResetScreen({
+  YelpResetScreen({
     super.key,
   });
 
+  final TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new_outlined),
+          color: YelpColors.backGroundColor.withOpacity(0.4),
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,6 +46,7 @@ class YelpResetScreen extends StatelessWidget {
                 inputField(
                   hintText: "Email",
                   controller: emailController,
+                  obscureText: true,
                 ),
               ],
             ),
