@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:http/http.dart' as http;
 import 'package:yelp/constant/colors.dart';
+import 'package:yelp/data/local/hive_flutter.dart';
 
 import 'business_details.dart';
 import 'locations.dart'; // Import your color constants
@@ -63,8 +64,8 @@ class BusinessListScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 // Extract business details
                 String name = businesses[index]['name'];
-                int reviewCount = businesses[index]['review_count'];
-                bool isOpen = businesses[index]['is_open'] == 1;
+                // int reviewCount = businesses[index]['review_count'];
+                // bool isOpen = businesses[index]['is_open'] == 1;
                 double stars = businesses[index]['stars']
                     .toDouble(); // Convert int to double
 
@@ -127,7 +128,20 @@ class BusinessListScreen extends StatelessWidget {
                           children: [
                             ElevatedButton(
                               onPressed: () {
-                                // Implement save button functionality
+                                HiveHelper.saveBusiness(name).then((value) {
+                                  ScaffoldMessenger.maybeOf(context)!
+                                      .showSnackBar(
+                                    const SnackBar(
+                                      content: Text(
+                                        "Saved Successfully",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      backgroundColor: Colors.green,
+                                    ),
+                                  );
+                                });
                               },
                               child: const Text(
                                 'Save',

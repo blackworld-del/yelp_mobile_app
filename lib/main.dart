@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:yelp/data/local/hive_flutter.dart';
 import 'package:yelp/data/local/yelp_lcoal.dart';
 import 'package:yelp/view/start/start_screen.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
+  await HiveHelper.initHive();
   await YelpLocalData.sharedInit();
   runApp(
     const Yelp(),
