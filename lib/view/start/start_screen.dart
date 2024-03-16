@@ -17,6 +17,22 @@ class YelpStartedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(15.0),
+            child: Text(
+              "Skip",
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.blueGrey,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
       body: SizedBox(
         width: double.infinity,
         child: Column(
@@ -116,25 +132,6 @@ class YelpStartedScreen extends StatelessWidget {
             ),
             SizedBox(
               height: deviceHeight(context: context) * 0.05,
-            ),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) {
-                    return const YelpHomeController();
-                  }),
-                  (route) => true,
-                );
-              },
-              child: const Text(
-                "Skip for Now",
-                style: TextStyle(
-                  fontSize: 13,
-                  color: Colors.blueGrey,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
             ),
           ],
         ),

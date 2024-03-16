@@ -17,6 +17,9 @@ class Yelp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white,
+        ),
         scaffoldBackgroundColor: Colors.white,
         textTheme: const TextTheme(
           titleMedium: TextStyle(

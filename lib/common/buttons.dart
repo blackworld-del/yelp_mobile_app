@@ -19,9 +19,9 @@ Widget customButton({
       borderRadius: const BorderRadius.all(
         Radius.circular(5),
       ),
-      border: Border.all(
-        color: YelpColors.backGroundColor,
-      ),
+      // border: Border.all(
+      //   color: ,
+      // ),
     ),
     child: Center(
       child: child,
